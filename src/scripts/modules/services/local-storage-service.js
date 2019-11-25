@@ -1,15 +1,14 @@
 class LocalStorageService {
-    _prefix = 'JS-Band-';
-
     constructor() {
+        this.prefix = 'JS-Band-';
     }
 
     set(key, value) {
-        localStorage.setItem(this._prefix + key, value);
+        localStorage.setItem(this.prefix + key, value);
     }
 
     get(key) {
-        return localStorage.getItem(this._prefix + key);
+        return localStorage.getItem(this.prefix + key);
     }
 }
 

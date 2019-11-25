@@ -28,6 +28,7 @@ export default class Data {
         if (localStorageService.get(key)) {
             const objectList = JSON.parse(localStorageService.get(key));
             objectList.forEach((object) => {
+                // eslint-disable-next-line new-cap
                 const model = new className();
                 result.push(Object.assign(model, object));
             });

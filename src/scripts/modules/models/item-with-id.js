@@ -1,11 +1,9 @@
 export default class ItemWithId {
-    id;
-
     constructor() {
-        this.setRandomId();
+        this.id = this.getRandomId();
     }
 
-    setRandomId() {
+    getRandomId() {
         function randomString(length) {
             let result = '';
             const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -16,7 +14,6 @@ export default class ItemWithId {
             return result;
         }
 
-        this.id = randomString(5) + "-" + randomString(5) + "-" + randomString(5);
+        return `${randomString(5)}-${randomString(5)}-${randomString(5)}`;
     }
-
 }

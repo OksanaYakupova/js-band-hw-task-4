@@ -76,9 +76,10 @@ function renderCostList() {
 }
 
 function clearFormInputs(form) {
-    form.querySelectorAll('input').forEach((input) => {
-        input.value = '';
-    });
+    form.querySelectorAll('input')
+        .forEach((input) => {
+            input.value = '';
+        });
 }
 
 function clearShipForm() {
@@ -100,11 +101,17 @@ renderShipList();
 renderTruckList();
 renderCostList();
 
-document.querySelector('.js-add-ship-form').addEventListener('submit', addShip);
-document.querySelector('.js-clear-ship-form').addEventListener('click', clearShipForm);
+document.querySelector('.js-add-ship-form')
+    .addEventListener('submit', addShip);
+document.querySelector('.js-clear-ship-form')
+    .addEventListener('click', clearShipForm);
 
-document.querySelector('.js-add-truck-form').addEventListener('submit', addTruck);
-document.querySelector('.js-clear-truck-form').addEventListener('click', clearTruckForm);
+document.querySelector('.js-add-truck-form')
+    .addEventListener('submit', addTruck);
+document.querySelector('.js-clear-truck-form')
+    .addEventListener('click', clearTruckForm);
 
-document.querySelector('.js-add-cost-form').addEventListener('submit', addCost);
-document.querySelector('.js-clear-cost-form').addEventListener('click', clearCostForm);
+document.querySelector('.js-add-cost-form')
+    .addEventListener('submit', addCost);
+document.querySelector('.js-clear-cost-form')
+    .addEventListener('click', clearCostForm);

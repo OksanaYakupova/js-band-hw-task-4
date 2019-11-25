@@ -7,14 +7,39 @@ module.exports = {
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
+    },
+    devServer: {
+        contentBase: './dist',
+        port: '8080',
+        host: 'localhost',
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                styles: {
+                    name: 'styles',
+                    test: /\.css/,
+                    chunks: 'all',
+                    enforce: true,
+                },
+            },
+        },
     },
     module: {
         rules: [
             {
                 test: /\.css$/,
-                // include: [path.resolve(__dirname, 'src/styles/style.css')],
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // only enable hot in development
+                            hmr: process.env.NODE_ENV === 'development',
+                            // if hmr does not work, this is a forceful method.
+                            reloadAll: true,
+                        },
+                    },
                     'css-loader',
                 ],
             },
@@ -22,11 +47,11 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './index.html',
+            template: './src/index.html',
             inject: false,
         }),
         new MiniCssExtractPlugin({
-            filename: 'styles.css',
+            filename: '[name].css',
         }),
     ],
 };
